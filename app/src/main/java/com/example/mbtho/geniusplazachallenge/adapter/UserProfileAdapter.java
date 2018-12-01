@@ -2,11 +2,13 @@ package com.example.mbtho.geniusplazachallenge.adapter;
 
 import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mbtho.geniusplazachallenge.R;
 import com.example.mbtho.geniusplazachallenge.main.MainContract;
@@ -43,6 +45,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         Picasso.get().load(mUserProfileList.get(position).getAvatar()).into(holder.avatar);
     }
 
+
     @Override
     public int getItemCount() {
         return mUserProfileList.size();
@@ -59,6 +62,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
 
     }
 

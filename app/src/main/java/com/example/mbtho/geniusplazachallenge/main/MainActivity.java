@@ -1,24 +1,30 @@
-package com.example.mbtho.geniusplazachallenge.main.view;
+package com.example.mbtho.geniusplazachallenge.main;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.mbtho.geniusplazachallenge.R;
 import com.example.mbtho.geniusplazachallenge.adapter.UserProfileAdapter;
-import com.example.mbtho.geniusplazachallenge.main.model.GetUserProfileInteractorImpl;
-import com.example.mbtho.geniusplazachallenge.main.MainContract;
-import com.example.mbtho.geniusplazachallenge.main.presenter.MainPresenterImpl;
 import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
 
     private MainContract.Presenter mPresenter;
-    private RecyclerView recyclerView;
+
+    @BindView(R.id.recycler_view_profile_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.add_user_fab)
+    FloatingActionButton addUserButton;
 
 
 
@@ -26,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
         initRecyclerView();
 
         mPresenter = new MainPresenterImpl(this, new GetUserProfileInteractorImpl());
@@ -34,26 +43,27 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     private void initRecyclerView(){
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        recyclerView = findViewById(R.id.recycler_view_profile_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(12);
         recyclerView.setLayoutManager(layoutManager);
+    }
+
+    @OnClick(R.id.add_user_fab)
+    @Override
+    public void showNewProfile(){
 
     }
 
 
     @Override
     public void showProgress() {
-
+        //show loading action
     }
 
     @Override
     public void hideProgress() {
-
+        //hide loading action
     }
 
     @Override
@@ -67,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     }
 
-    /** --- LIFE CYCLE METHODS -------------- **/
+    /** --- OTHER LIFE CYCLE METHODS -------------- **/
 
     @Override
     protected void onStart() {

@@ -1,4 +1,4 @@
-package com.example.mbtho.geniusplazachallenge.main.presenter;
+package com.example.mbtho.geniusplazachallenge.main;
 
 import android.widget.ImageView;
 

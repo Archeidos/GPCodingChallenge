@@ -22,6 +22,8 @@ public interface MainContract {
 
         void setDataToRecyclerView(ArrayList<UserProfile> userProfileArrayList);
 
+        void showNewProfile();
+
         void onResponseFailure(Throwable t);
 
 
@@ -46,7 +48,8 @@ public interface MainContract {
         }
 
         void getUserProfileArrayList(OnFinishedListener onFinishedListener);
-        ;
+
+        void addUserProfile();
 
 
 
