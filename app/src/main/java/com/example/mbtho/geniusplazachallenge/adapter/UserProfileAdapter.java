@@ -2,16 +2,14 @@ package com.example.mbtho.geniusplazachallenge.adapter;
 
 import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mbtho.geniusplazachallenge.R;
-import com.example.mbtho.geniusplazachallenge.main.MainContract;
+import com.example.mbtho.geniusplazachallenge.profiles.MainContract;
 import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 import com.squareup.picasso.Picasso;
 

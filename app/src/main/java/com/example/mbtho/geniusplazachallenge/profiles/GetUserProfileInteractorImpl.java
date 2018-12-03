@@ -1,14 +1,11 @@
-package com.example.mbtho.geniusplazachallenge.main;
+package com.example.mbtho.geniusplazachallenge.profiles;
 
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.example.mbtho.geniusplazachallenge.data.GetUserProfileService;
-import com.example.mbtho.geniusplazachallenge.main.MainContract;
 import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 import com.example.mbtho.geniusplazachallenge.model.UserProfileList;
 import com.example.mbtho.geniusplazachallenge.network.RetrofitInstance;
-import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,19 +37,19 @@ public class GetUserProfileInteractorImpl implements MainContract.GetUserProfile
     }
 
     @Override
-    public void addUserProfile() {
+    public void requestNewUserProfile(final OnFinishedListener onFinishedListener) {
         GetUserProfileService service = RetrofitInstance.getRetrofitInstance().create(GetUserProfileService.class);
 
-        Call<UserProfile> call = service.createUserProfile(
-                "first",
-                "last",
+        Call<UserProfile> call = service.createUserProfile(new UserProfile("10",
+                "First",
+                "Last",
                 "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
-        );
+        ));
 
         call.enqueue(new Callback<UserProfile>() {
             @Override
             public void onResponse(Call<UserProfile> call, Response<UserProfile> response) {
-                Log.d("test1","onResponse" + response.body().toString());
+                onFinishedListener.onFinished(response.body());
             }
 
             @Override

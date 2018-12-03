@@ -1,4 +1,4 @@
-package com.example.mbtho.geniusplazachallenge.main;
+package com.example.mbtho.geniusplazachallenge.profiles;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @BindView(R.id.add_user_fab)
     FloatingActionButton addUserButton;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         mPresenter = new MainPresenterImpl(this, new GetUserProfileInteractorImpl());
         mPresenter.fetchUserProfiles();
-
     }
 
     private void initRecyclerView(){
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @OnClick(R.id.add_user_fab)
     @Override
     public void showNewProfile(){
-
+        mPresenter.submitUserProfile();
     }
 
 
@@ -92,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mPresenter.onDestroy();
     }
 
     @Override

@@ -13,7 +13,7 @@ public class UserProfileList {
         return userProfileList;
     }
 
-    public void setNoticeArrayList(ArrayList<UserProfile> userProfileArrayList) {
+    public void setUserProfileArrayList(ArrayList<UserProfile> userProfileArrayList) {
         this.userProfileList = userProfileArrayList;
     }
 

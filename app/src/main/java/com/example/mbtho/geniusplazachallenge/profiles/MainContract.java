@@ -1,9 +1,4 @@
-package com.example.mbtho.geniusplazachallenge.main;
-
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
+package com.example.mbtho.geniusplazachallenge.profiles;
 
 import com.example.mbtho.geniusplazachallenge.base.BasePresenter;
 import com.example.mbtho.geniusplazachallenge.base.BaseView;
@@ -31,11 +26,11 @@ public interface MainContract {
 
     interface Presenter extends BasePresenter {
 
-        void onStart();
-
         void onDestroy();
 
         void fetchUserProfiles();
+
+        void submitUserProfile();
 
 
     }
@@ -44,14 +39,13 @@ public interface MainContract {
 
         interface OnFinishedListener {
             void onFinished(ArrayList<UserProfile> userProfileArrayList);
+            void onFinished(UserProfile userProfile);
             void onFailure(Throwable t);
         }
 
         void getUserProfileArrayList(OnFinishedListener onFinishedListener);
 
-        void addUserProfile();
-
-
+        void requestNewUserProfile(OnFinishedListener onFinishedListener);
 
     }
 
