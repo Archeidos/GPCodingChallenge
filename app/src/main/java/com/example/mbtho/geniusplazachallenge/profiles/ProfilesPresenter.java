@@ -6,20 +6,20 @@ import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 
 import java.util.ArrayList;
 
-public class MainPresenterImpl implements MainContract.Presenter, MainContract.GetUserProfileInteractor.OnFinishedListener {
+public class ProfilesPresenter implements ProfilesContract.Presenter, ProfilesContract.GetUserProfileInteractor.OnFinishedListener {
 
-    private MainContract.View mMainView;
-    private MainContract.GetUserProfileInteractor mInteractor;
+    private ProfilesContract.View mMainView;
+    private ProfilesContract.GetUserProfileInteractor mInteractor;
 
     private ArrayList<UserProfile> userProfileArrayList;
 
-    public MainPresenterImpl(MainContract.View mainView, MainContract.GetUserProfileInteractor interactor) {
+    public ProfilesPresenter(ProfilesContract.View mainView, ProfilesContract.GetUserProfileInteractor interactor) {
         this.mMainView = mainView;
         this.mInteractor = interactor;
     }
 
     @Override
-    public void onDestroy() {
+    public void destroy() {
         mMainView = null;
     }
 

@@ -11,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetUserProfileInteractorImpl implements MainContract.GetUserProfileInteractor {
+public class GetUserProfileInteractorImpl implements ProfilesContract.GetUserProfileInteractor {
 
     @Override
     public void getUserProfileArrayList(final OnFinishedListener onFinishedListener) {

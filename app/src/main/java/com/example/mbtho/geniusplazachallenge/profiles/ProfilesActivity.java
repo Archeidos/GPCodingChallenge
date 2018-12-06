@@ -1,5 +1,6 @@
 package com.example.mbtho.geniusplazachallenge.profiles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.mbtho.geniusplazachallenge.R;
 import com.example.mbtho.geniusplazachallenge.adapter.UserProfileAdapter;
+import com.example.mbtho.geniusplazachallenge.addprofile.AddProfileActivity;
 import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 
 import java.util.ArrayList;
@@ -16,10 +18,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+public class ProfilesActivity extends AppCompatActivity implements ProfilesContract.View {
 
 
-    private MainContract.Presenter mPresenter;
+    private ProfilesContract.Presenter mPresenter;
 
     @BindView(R.id.recycler_view_profile_list)
     RecyclerView recyclerView;
@@ -29,18 +31,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.profiles_act);
 
         ButterKnife.bind(this);
 
         initRecyclerView();
 
-        mPresenter = new MainPresenterImpl(this, new GetUserProfileInteractorImpl());
+        mPresenter = new ProfilesPresenter(this, new GetUserProfileInteractorImpl());
         mPresenter.fetchUserProfiles();
     }
 
     private void initRecyclerView(){
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ProfilesActivity.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(12);
         recyclerView.setLayoutManager(layoutManager);
@@ -49,9 +51,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @OnClick(R.id.add_user_fab)
     @Override
     public void showNewProfile(){
-        mPresenter.submitUserProfile();
+        //mPresenter.submitUserProfile();
+        showAddProfile();
     }
 
+    @Override
+    public void showAddProfile() {
+        Intent intent = new Intent(getApplicationContext(), AddProfileActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void showProgress() {
@@ -89,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
+        mPresenter.destroy();
     }
 
     @Override

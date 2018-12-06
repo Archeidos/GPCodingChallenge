@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mbtho.geniusplazachallenge.R;
-import com.example.mbtho.geniusplazachallenge.profiles.MainContract;
+import com.example.mbtho.geniusplazachallenge.profiles.ProfilesContract;
 import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 import com.squareup.picasso.Picasso;
 
@@ -22,9 +22,9 @@ import butterknife.ButterKnife;
 public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.ProfileViewHolder> {
 
     private ArrayList<UserProfile> mUserProfileList;
-    private MainContract.Presenter mMainPresenter;
+    private ProfilesContract.Presenter mMainPresenter;
 
-    public UserProfileAdapter(ArrayList<UserProfile> userProfileList, MainContract.Presenter mainPresenter) {
+    public UserProfileAdapter(ArrayList<UserProfile> userProfileList, ProfilesContract.Presenter mainPresenter) {
         this.mUserProfileList = userProfileList;
         this.mMainPresenter = mainPresenter;
 

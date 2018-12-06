@@ -2,6 +2,6 @@ package com.example.mbtho.geniusplazachallenge.base;
 
 public interface BasePresenter {
 
-    void onDestroy();
+    void destroy();
 
 }

@@ -6,7 +6,7 @@ import com.example.mbtho.geniusplazachallenge.model.UserProfile;
 
 import java.util.ArrayList;
 
-public interface MainContract {
+public interface ProfilesContract {
 
 
     interface View extends BaseView {
@@ -19,6 +19,8 @@ public interface MainContract {
 
         void showNewProfile();
 
+        void showAddProfile();
+
         void onResponseFailure(Throwable t);
 
 
@@ -26,7 +28,7 @@ public interface MainContract {
 
     interface Presenter extends BasePresenter {
 
-        void onDestroy();
+        void destroy();
 
         void fetchUserProfiles();
 
